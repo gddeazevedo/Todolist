@@ -10,7 +10,7 @@ class _TodoListState extends State<TodoList> {
   List<Todo> _todos = [
     Todo(title: 'Todo 1'),
     Todo(title: 'Todo 2'),
-    Todo(title: 'Todo 3'),
+    Todo(title: 'Todo 30'),
     Todo(title: 'Todo 4'),
   ];
 
@@ -19,21 +19,26 @@ class _TodoListState extends State<TodoList> {
       padding: EdgeInsets.symmetric(vertical: 4, horizontal: 20),
       child: Card(
         elevation: 0,
-        color: Colors.deepPurple[900],
+        color: Colors.yellow[50], //Colors.deepPurple[900],
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(12)),
         ),
-        child: Container(
-          child: ListTile(
-            onTap: () => setState(() => print(_todos[index])),
-            title: Text(
-              _todos[index].title,
-              style: TextStyle(
-                fontSize: 22,
-                color: Colors.grey[200],
-              ),
+        child: CheckboxListTile(
+          value: _todos[index].isDone,
+          title: Text(
+            _todos[index].title,
+            style: TextStyle(
+              fontSize: 22,
+              fontWeight: FontWeight.bold,
+              color: Colors.deepPurple[900],
             ),
           ),
+          controlAffinity: ListTileControlAffinity.leading,
+          activeColor: Colors.deepPurple[900],
+          checkColor: Colors.white,
+          onChanged: (newValue) {
+            setState(() => _todos[index].isDone = newValue);
+          },
         ),
       ),
     );

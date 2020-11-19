@@ -1,10 +1,6 @@
 class Todo {
   String title;
-  bool _isDone = false;
+  bool isDone = false;
 
   Todo({this.title});
-
-  void done() {
-    _isDone = true;
-  }
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todolist/widgets/todolist.dart';
+import 'package:todolist/widgets/todo_list.dart';
 
 class Home extends StatelessWidget {
   @override
@@ -11,6 +11,7 @@ class Home extends StatelessWidget {
           'Todolist',
           style: TextStyle(
             fontSize: 33,
+            color: Colors.grey[400],
           ),
         ),
         elevation: 0,
@@ -23,7 +24,7 @@ class Home extends StatelessWidget {
             SizedBox(height: 30),
             Flexible(
               child: TodoList(),
-            )
+            ),
           ],
         ),
       ),
