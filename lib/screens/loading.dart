@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart' as spin_kit;
 import 'package:todolist/services/routes.dart';
 
 class Loading extends StatefulWidget {
@@ -9,7 +9,7 @@ class Loading extends StatefulWidget {
 
 class _LoadingState extends State<Loading> {
   void _simulateFuture() async {
-    Future.delayed(Duration(seconds: 5), () {
+    Future.delayed(Duration(seconds: 2), () {
       Navigator.pushReplacementNamed(context, homeRoute);
     });
   }
@@ -25,7 +25,7 @@ class _LoadingState extends State<Loading> {
     return Scaffold(
       backgroundColor: Colors.deepPurple[500],
       body: Center(
-        child: SpinKitFoldingCube(
+        child: spin_kit.SpinKitFoldingCube(
           color: Colors.white,
           size: 80,
         ),

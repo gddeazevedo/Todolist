@@ -1,18 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:todolist/models/todo.dart';
 
-class TodoList extends StatefulWidget {
-  @override
-  _TodoListState createState() => _TodoListState();
-}
+class TodoList extends StatelessWidget {
+  final List<Todo> _todos;
+  final OnChanged _onChanged;
 
-class _TodoListState extends State<TodoList> {
-  List<Todo> _todos = [
-    Todo(title: 'Todo 1'),
-    Todo(title: 'Todo 2'),
-    Todo(title: 'Todo 30'),
-    Todo(title: 'Todo 4'),
-  ];
+  TodoList(this._todos, this._onChanged);
 
   Widget _itemBuilder(BuildContext context, int index) {
     return Padding(
@@ -36,9 +29,7 @@ class _TodoListState extends State<TodoList> {
           controlAffinity: ListTileControlAffinity.leading,
           activeColor: Colors.deepPurple[900],
           checkColor: Colors.white,
-          onChanged: (newValue) {
-            setState(() => _todos[index].isDone = newValue);
-          },
+          onChanged: (newValue) => _onChanged(newValue, index),
         ),
       ),
     );
@@ -52,3 +43,5 @@ class _TodoListState extends State<TodoList> {
     );
   }
 }
+
+typedef OnChanged = void Function(bool, int);

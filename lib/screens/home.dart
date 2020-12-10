@@ -1,7 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:todolist/widgets/todo_list.dart';
+import 'package:todolist/models/todo.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  List<Todo> _todos = [
+    Todo(title: 'Todo 1'),
+    Todo(title: 'Todo 2'),
+    Todo(title: 'Todo 30'),
+    Todo(title: 'Todo 4'),
+  ];
+
+  void _checkTodo(bool newValue, int index) {
+    setState(() {
+      _todos[index].isDone = newValue;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,10 +39,21 @@ class Home extends StatelessWidget {
       ),
       body: Container(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             SizedBox(height: 30),
+            Padding(
+              padding: EdgeInsets.only(left: 29),
+              child: FlatButton(
+                onPressed: () {},
+                color: Colors.white,
+                textColor: Colors.deepPurple[900],
+                child: Text('Add todo'),
+              ),
+            ),
+            SizedBox(height: 30),
             Flexible(
-              child: TodoList(),
+              child: TodoList(_todos, _checkTodo),
             ),
           ],
         ),
