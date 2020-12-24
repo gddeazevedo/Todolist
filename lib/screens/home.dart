@@ -39,16 +39,19 @@ class _HomeState extends State<Home> {
       ),
       body: Container(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             SizedBox(height: 30),
-            Padding(
-              padding: EdgeInsets.only(left: 29),
-              child: FlatButton(
-                onPressed: () {},
-                color: Colors.white,
-                textColor: Colors.deepPurple[900],
-                child: Text('Add todo'),
+            FlatButton(
+              onPressed: () {
+                print('Click');
+              },
+              color: Colors.white,
+              textColor: Colors.deepPurple[900],
+              child: Text('Add todo'),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(12)),
               ),
             ),
             SizedBox(height: 30),
